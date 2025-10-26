@@ -1,0 +1,5 @@
+{
+  "name": "AMOLED E-shop",
+  "description": "A modern, fully functional, and extensible e-commerce application built with React, TypeScript, and Tailwind CSS. It is designed with a focus on clean code, modularity, and a great user experience (UX) thanks to smooth animations and an AMOLED dark theme.",
+  "requestFramePermissions": []
+}

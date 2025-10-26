@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AMOLED E-shop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+      body {
+        cursor: crosshair;
+      }
+      button, a {
+        cursor: pointer;
+      }
+      .dark body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-image: linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px);
+        background-size: 1px 3px;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.1;
+      }
+    </style>
+    <script>
+      // Stop FOUC (Flash of Unstyled Content) for dark mode
+      if (
+        localStorage.getItem('theme') === 'dark' ||
+        (!('theme' in localStorage) &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Share Tech Mono"', 'monospace'],
+            },
+            colors: {
+              'primary-green': '#00ff41',
+              'neon-pink': '#f50057',
+            },
+            boxShadow: {
+              'neon-glow': '0 0 5px rgba(0, 255, 65, 0.8), 0 0 15px rgba(0, 255, 65, 0.5)',
+              'neon-glow-strong': '0 0 10px rgba(0, 255, 65, 1), 0 0 25px rgba(0, 255, 65, 0.7)',
+            },
+            keyframes: {
+              'pulse-glow': {
+                '0%, 100%': { 
+                  boxShadow: '0 0 5px rgba(0, 255, 65, 0.8), 0 0 15px rgba(0, 255, 65, 0.5)',
+                  transform: 'scale(1)' 
+                },
+                '50%': { 
+                  boxShadow: '0 0 10px rgba(0, 255, 65, 1), 0 0 30px rgba(0, 255, 65, 0.7)',
+                  transform: 'scale(1.02)'
+                },
+              }
+            },
+            animation: {
+              'pulse-glow': 'pulse-glow 2.5s infinite ease-in-out',
+            }
+          },
+        },
+      };
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "zustand/": "https://aistudiocdn.com/zustand@^5.0.8/",
+    "zustand": "https://aistudiocdn.com/zustand@^5.0.8",
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.24",
+    "react-icons/": "https://aistudiocdn.com/react-icons@^5.5.0/",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.4"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
